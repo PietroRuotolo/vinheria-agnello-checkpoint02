@@ -1,127 +1,111 @@
-// Funções 
-
-// Função para validar entradas do usuário
-function validarEntrada(mensagem) {
-    let entrada = prompt(mensagem);
-
-    while (entrada === "" || entrada === "") {
-        alert("Campo obrigatório! Digite novamente.");
-        entrada = prompt(mensagem);
-    }
-
-    return entrada;
-
-}
-// Função de estoque baixo
-function verificarEstoqueBaixo(estoque) {
-    return estoque < 5;
-}
-
-function classficarVinho(safra) {
-    let anoAtual = 2026;
-    let idade = anoAtual - safra;
-
-    if (idade <= 3 ) {
-        return "jovem";
-    }
-    else if (idade <= 10) {
-        return "amadurecido";
-    } else {
-        return "antigo";
-    }
-}
-
-// Função para exibir dados do vinho
-function exibirDados(nome, tipo, safra, estoque, pais, classificacao) {
-    console.log(
-        `${nome}:
-        TIPO - ${tipo}
-        SAFRA - ${safra}
-        ESTOQUE - ${estoque}
-        PAÍS - ${pais}
-        CLASSIFICAÇÃO - ${classificacao}`
-    );
-    alert(`Vinho ${nome} cadastrado com sucesso! Classificação: ${classificacao}`);
-}
-
-let nome = validarEntrada("Insira seu nome: ");
-let estado = validarEntrada("Insira o seu estado: ");
+let nome = prompt("Insira seu nome: ");
 
 let cadastros = 0;
 let estoqueBaixo = 0;
 let vinhoMaisAntigo = 0;
 let menorSafra = 20;
-let continuar;
+let continuar = true;
+let anoAtual = 2026;    
 
-alert(`Cadastro realizado!\nSeja bem vindo ${nome}, Veja os detalhes no console.`);
+
+
+alert(`Cadastro realizado!\nSeja bem vindo ${nome}`);
+
+console.log(`Olá ${nome}!\nAqui estão os vinhos cadastrados: `);
 
 //cadastro de vinhos
 alert(`Vamos cadastrar os Vinhos!`)
 while (continuar){
-    let nomeVinho = validarEntrada("Nome do vinho:");
-    let tipoVinho = validarEntrada("Tipo do vinho:");
-    let safraVinho = parseInt(validarEntrada("Ano da safra:"));
-    let estoqueVinho = parseInt (validarEntrada("Quantidade em estoque:"));
-    let paisVinho = validarEntrada(`País de origem:`);
+    let nomeVinho = prompt("Nome do vinho:");
+    let tipoVinho = prompt("Tipo do vinho:");
+    let safraVinho = parseInt(prompt("Ano da safra:"));
+       if ((anoAtual - safraVinho) <= 3){
+        console.log('\nVINHO JOVEM!')
+       };
+       
+       if (((anoAtual - safraVinho) < 8) && ((anoAtual - safraVinho) > 3)){
+        console.log('\nVINHO AMADURECIDO!')
+       };
+       
+       if (8 <= (anoAtual - safraVinho))  {
+        console.log('\nVINHO ANTIGO!')
+       };
 
-    //processamento
-    let classe = classificarVinho(safraVinho);
 
-    if (verificarEstoqueBaixo(estoqueVinho)) {
-        EstoqueBaixo++
-    }
 
-    //Encontrar o vinho mais antigo
-    if (safraVinho < menorSafra) {
-        menorSafra = safraVinho
-        vinhoMaisAntigo = nomeVinho;
-    }
+    let estoqueVinho = parseInt (prompt("Quantidade em estoque:"));
+       if (estoqueVinho < 5 ){
+        estoqueBaixo++
+       };
 
-    //contagem
-    exibirDados(nomeVinho, tipoVinho, safraVinho, estoqueVinho, paisVinho, classe);
-    cadastros++;
+    let paisVinho = prompt(`País de origem:`);
 
-    continuar = confirm("Deseja cadastrar mais um vinho?");
+    alert(`Nome do vinho: ${nomeVinho} \nTipo: ${tipoVinho} \nSafra: ${safraVinho} \nEstoque: ${estoqueVinho} \nPais: ${paisVinho}`);
+
+    let resposta = prompt("Deseja cadastrar mais algum vinho? (s/n)").toLowerCase();
+    if (resposta === "n") {
+        continuar = false;
+            alert('Confira os detalhes no console!');
+    };
+   
+cadastros++
+
+
+console.log(`Nome do vinho: ${nomeVinho} \nTipo: ${tipoVinho} \nSafra: ${safraVinho} \nEstoque: ${estoqueVinho} \nPais: ${paisVinho}`);
+
 
 }
 
-console.log(`Olá ${nome}, esses são os nossos vinhos disponíveis para o estado de ${estado}: `);
+console.log(`Cadastros realizados: ${cadastros} \nVinhos com estoque baixo: ${estoqueBaixo}`)
 
 
-console.log(`Cabernet 2020:
-TIPO - Tinto
-
-SAFRA - 2020
-
-ESTOQUE - 15  
-
-PAÍS - França 
-`);
 
 
-console.log(`Sauvignon Blanc 2023:
-TIPO - Branco
-
-SAFRA - 2023
-
-ESTOQUE - 30 
-
-PAÍS - Argentina 
-`);
 
 
-console.log(`Viejo Feo Reserva Pinot Noir Rosé 2024:
-TIPO - Rosé
 
-SAFRA - 2024
+// // Funções 
 
-ESTOQUE - 50 
+// // Função para validar entradas do usuário
+// function validarEntrada(mensagem) {
+//     let entrada = prompt(mensagem);
 
-PAÍS - Chile`
-);
+//     while (entrada === "" || entrada === "") {
+//         alert("Campo obrigatório! Digite novamente.");
+//         entrada = prompt(mensagem);
+//     }
 
-console.log(`Total de vinhos cadastrados: ${cadastros}`);
-console.log(`Vinhos com estoque baixo (< 5): ${estoqueBaixo}`);
-if (vinhoMaisAntigo) {
-    console.log(`O vinho mais antigo é: ${vinhoMaisAntigo}, da safra do ano de ${menorSafra}`);
-}
+//     return entrada;
+
+// }
+// // Função de estoque baixo
+// function verificarEstoqueBaixo(estoque) {
+//     return estoque < 5;
+// }
+
+// function classificarVinho(safra) {
+//     let anoAtual = 2026;
+//     let idade = anoAtual - safra;
+
+//     if (idade <= 3 ) {
+//          return "jovem";
+//     }
+//     else if (idade <= 10) {
+//         return "amadurecido";
+//     } else {
+//         return "antigo";
+//     }
+// }
+
+// // Função para exibir dados do vinho
+// function exibirDados(nome, tipo, safra, estoque, pais, classificacao) {
+//     console.log(
+//         `${nome}:
+//         TIPO - ${tipo}
+//         SAFRA - ${safra}
+//         ESTOQUE - ${estoque}
+//         PAÍS - ${pais}
+//         CLASSIFICAÇÃO - ${classificacao}`
+//     );
+//     alert(`Vinho ${nome} cadastrado com sucesso! Classificação: ${classificacao}`);
+// }
