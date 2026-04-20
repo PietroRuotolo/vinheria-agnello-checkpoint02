@@ -87,6 +87,7 @@ while (continuar){
 
 console.log(`Olá ${nome}, esses são os nossos vinhos disponíveis para o estado de ${estado}: `);
 
+
 console.log(`Cabernet 2020:
 TIPO - Tinto
 
