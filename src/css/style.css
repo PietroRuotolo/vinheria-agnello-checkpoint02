@@ -108,12 +108,34 @@ body{
     margin-top: 4px;
 }
 
+.imagens-vinhos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin: 40px 0;
+    padding: 20px;
+}
+
+.imagem-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.imagem-container-centralizada {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 #imagem1{
     border-radius: 5px;
     object-fit: cover;
     width: 500px;
     height: 300px;
-    padding: 0 100px;
 }
 
 #imagem2{
@@ -121,7 +143,6 @@ body{
     object-fit: cover;
     width: 450px;
     height: 300px;
-    padding: 0 70px;
 }
 
 #imagem3{
@@ -129,5 +150,5 @@ body{
     object-fit: cover;
     width: 420px;
     height: 300px;
-    padding: 0 90px;
+    padding: 0 20px;
 }
