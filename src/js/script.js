@@ -1,6 +1,8 @@
 const ANO_ATUAL = 2026;
 let cadastros = 0;
 let estoqueBaixo = 0;
+let safraMaisAntiga = ANO_ATUAL;
+let vinhoMaisAntigo = "";
 
 function iniciarSistema() {
     let nome = prompt("Insira seu nome: ");
@@ -34,6 +36,11 @@ function executarCadastro() {
         estoqueBaixo++;
     }
 
+    if(safraVinho < safraMaisAntiga){
+        safraMaisAntiga = safraVinho;
+        vinhoMaisAntigo = nomeVinho;
+    }
+
     let paisVinho = prompt(`País de origem:`);
 
     // Exibição dos dados
@@ -60,6 +67,7 @@ function verificarContinuidade() {
 function exibirResumoFinal() {
     console.log(`Cadastros realizados: ${cadastros}`);
     console.log(`Vinhos com estoque baixo: ${estoqueBaixo}`);
+    console.log(`Vinho com a safra mais antiga: ${vinhoMaisAntigo} (Ano da safra: ${safraMaisAntiga})`);
 }
 
 iniciarSistema();
